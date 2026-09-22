@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+/**
+ * Design tokens.
+ * Anything defined here under @theme becomes a Tailwind utility:
+ *   --color-bg      -> bg-bg / text-bg / border-bg
+ *   --font-display  -> font-display
+ *   --radius-pill   -> rounded-pill
+ * Change the palette or type scale in one place, here.
+ */
+@theme {
+  --color-bg: #eeece7;
+  --color-bg-raised: #f6f5f1;
+  --color-ink: #14120f;
+  --color-ink-soft: #4a463f;
+  --color-accent: #c1440e;
+  --color-line: rgba(20, 18, 15, 0.14);
+  --color-chip: #14120f;
+  --color-chip-ink: #f4f2ec;
+
+  --font-display: 'Space Grotesk', Inter, -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  --radius-pill: 999px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-ink font-body antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .ease-brand {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
